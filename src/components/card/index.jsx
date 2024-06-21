@@ -1,6 +1,9 @@
 import { PropTypes } from 'prop-types';
+import { useContext } from 'react';
+import { ShoopingCartContext } from '../../context/Index';
 
 const Card = ({ price, title, image, category }) => {
+  const { count, setCount } = useContext(ShoopingCartContext);
   return (
     <div className="bg-gray-100 hover:bg-gray-300 transition-colors
      duration-500 ease-in-out shadow-2xl cursor-pointer w-56 h-60 rounded-lg">
@@ -9,9 +12,10 @@ const Card = ({ price, title, image, category }) => {
           { category }
         </span>
         <img className="w-full h-full object-cover rounded-lg" src={ image } alt={ title } />
-        <div className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1">
+        <button className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
+          onClick={() => setCount(count + 1)}>
           +
-        </div>
+        </button>
       </figure>
       <p className="flex justify-between px-3 py-1">
         <span className="text-sm font-light truncate">{ title }</span>

@@ -1,9 +1,13 @@
+import { useContext } from 'react';
 import { NavItem } from '../nav-item'
+import { ShoopingCartContext } from '../../context/Index';
 
 const Navbar = () => {
   let activeStyle = {
     textDecoration: "underline"
   }
+  const { count } = useContext(ShoopingCartContext);
+
   return (
     <nav className='flex top-0 justify-between items-center fixed w-full z-10 py-5 px-8 text-sm font-light'>
       <ul className='flex items-center gap-3'>
@@ -64,7 +68,7 @@ const Navbar = () => {
           </NavItem>
         </li>
         <li>
-          coche de compras: 0
+          coche de compras: {count}
         </li>
       </ul>
     </nav>

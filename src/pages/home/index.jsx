@@ -6,13 +6,12 @@ import { apiUrl } from "../../api";
 
 function Home() {
 
-  const [products, setProduct] = useState(null);
+  const [products, setProducts] = useState(null);
 
   useEffect(() => {
-
     fetch(`${apiUrl}/products`)
       .then(res => res.json())
-      .then(data => setProduct(data))
+      .then(data => setProducts(data))
       .catch(err => console.error(err));
   }, [])
 
