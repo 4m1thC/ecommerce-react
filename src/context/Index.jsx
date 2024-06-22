@@ -14,17 +14,16 @@ export const ShoppingCartProvider = ({ children }) => {
   const openCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(true);
   const closeCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(false);
 
-  // console.log(isCheckoutSideMenuOpen);
-
   const [productShow, setProductShow] = useState({
+    id: "",
     title: "",
     price: "",
+    category: "",
     description: "",
     image: "",
   });
 
   const [cartProducts, setCartProducts] = useState([])
-  console.log(cartProducts);
   return (
     <ShoppingCartContext.Provider value={{
       count, setCount,

@@ -23,6 +23,7 @@ const Home = () => {
         {
           products?.map((product) => {
             return <Card key={product.id}
+              id={product.id}
               price={product.price}
               title={product.title}
               image={product.image}
