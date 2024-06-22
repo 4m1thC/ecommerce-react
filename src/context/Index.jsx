@@ -1,20 +1,37 @@
 import { createContext, useState } from "react";
 import PropTypes from 'prop-types'
 
-export const ShoopingCartContext = createContext();
+export const ShoppingCartContext = createContext();
 
-export const ShoopingCartProvider = ({children}) => {
+export const ShoppingCartProvider = ({ children }) => {
   const [count, setCount] = useState(0);
+
+  const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
+  const openProductDetail = () => setIsProductDetailOpen(true);
+  const closeProductDetail = () => setIsProductDetailOpen(false);
+
+  const [productShow, setProductShow] = useState({
+    title: "",
+    price: "",
+    description: "",
+    image: "",
+  });
+
   return (
-    <ShoopingCartContext.Provider value={{
+    <ShoppingCartContext.Provider value={{
       count,
-      setCount
-     }}>
+      setCount,
+      isProductDetailOpen,
+      openProductDetail,
+      closeProductDetail,
+      productShow,
+      setProductShow,
+    }}>
       {children}
-    </ShoopingCartContext.Provider>
+    </ShoppingCartContext.Provider>
   )
 }
 
-ShoopingCartProvider.propTypes = {
+ShoppingCartProvider.propTypes = {
   children: PropTypes.node.isRequired,
 }

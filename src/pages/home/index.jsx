@@ -3,9 +3,9 @@ import { useState, useEffect } from "react";
 import { Layout } from "../../components/layout";
 import { Card } from "../../components/card"
 import { apiUrl } from "../../api";
+import { ProductDetail } from "../../components/product-detail";
 
-function Home() {
-
+const Home = () => {
   const [products, setProducts] = useState(null);
 
   useEffect(() => {
@@ -26,10 +26,13 @@ function Home() {
               price={product.price}
               title={product.title}
               image={product.image}
-              category={product.category} />
+              category={product.category}
+              description={product.description}
+            />
           })
         }
       </div>
+      <ProductDetail />
     </Layout>
   )
 }

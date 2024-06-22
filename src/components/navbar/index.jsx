@@ -1,15 +1,16 @@
 import { useContext } from 'react';
 import { NavItem } from '../nav-item'
-import { ShoopingCartContext } from '../../context/Index';
+import { ShoppingCartContext } from '../../context';
+import { ShoppingCartIcon } from '@heroicons/react/24/solid';
 
 const Navbar = () => {
   let activeStyle = {
     textDecoration: "underline"
   }
-  const { count } = useContext(ShoopingCartContext);
+  const { count } = useContext(ShoppingCartContext);
 
   return (
-    <nav className='flex top-0 justify-between items-center fixed w-full z-10 py-5 px-8 text-sm font-light'>
+    <nav className='bg-white flex top-0 justify-between items-center fixed w-full z-10 py-5 px-8 text-sm font-light'>
       <ul className='flex items-center gap-3'>
         <li className='font-semibold text-lg'>
           <NavItem to='/'>
@@ -67,8 +68,9 @@ const Navbar = () => {
             Sing In
           </NavItem>
         </li>
-        <li>
-          coche de compras: {count}
+        <li className='flex bg-gray-100 px-1 shadow-sm cursor-pointer'>
+          <ShoppingCartIcon className='size-5 items-center justify-center'/>
+          <span>{count}</span>
         </li>
       </ul>
     </nav>
