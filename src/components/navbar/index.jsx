@@ -7,7 +7,7 @@ const Navbar = () => {
   let activeStyle = {
     textDecoration: "underline"
   }
-  const { count } = useContext(ShoppingCartContext);
+  const { count, openCheckoutSideMenu } = useContext(ShoppingCartContext);
 
   return (
     <nav className='bg-white flex top-0 justify-between items-center fixed w-full z-10 py-5 px-8 text-sm font-light'>
@@ -68,7 +68,8 @@ const Navbar = () => {
             Sing In
           </NavItem>
         </li>
-        <li className='flex bg-gray-100 px-1 shadow-sm cursor-pointer'>
+        <li onClick={() => openCheckoutSideMenu()}
+          className='flex bg-gray-100 p-1 rounded-lg shadow-sm cursor-pointer'>
           <ShoppingCartIcon className='size-5 items-center justify-center'/>
           <span>{count}</span>
         </li>

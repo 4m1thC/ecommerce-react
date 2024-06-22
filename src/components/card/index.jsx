@@ -3,13 +3,25 @@ import { useContext } from 'react';
 import { ShoppingCartContext } from '../../context';
 import { PlusIcon, CurrencyDollarIcon } from '@heroicons/react/20/solid';
 
-
 const Card = ({ price, title, image, category, description }) => {
-  const { count, setCount, openProductDetail, setProductShow } = useContext(ShoppingCartContext);
+  const {
+    count, setCount,
+    openProductDetail, setProductShow,
+    cartProducts, setCartProducts
+  } = useContext(ShoppingCartContext);
 
   const showProduct = (priceSend, titleSend, imageSend, descriptionSend) => {
     openProductDetail();
-    setProductShow({price: priceSend, title: titleSend, image: imageSend, description: descriptionSend});
+    setProductShow({ price: priceSend, title: titleSend, image: imageSend, description: descriptionSend });
+  }
+
+  const addProductsToCart = (event, priceSend, titleSend, imageSend, categorySend, descriptionSend) => {
+    event.stopPropagation();
+    setCount(count + 1);
+    const productSend = {
+      price: priceSend, title: titleSend, image: imageSend, category: categorySend, description: descriptionSend
+    };
+    setCartProducts([...cartProducts, productSend]);
   }
 
   return (
@@ -23,9 +35,8 @@ const Card = ({ price, title, image, category, description }) => {
         </span>
         <img className="w-full h-full object-cover rounded-lg" src={image} alt={title} />
         <PlusIcon className="size-8 absolute top-0 right-0 flex justify-center items-center
-         bg-gray-100 hover:bg-gray-300 w-6 h-6 rounded-full m-2 p-1" onClick={(e) => {
-            e.stopPropagation();
-            setCount(count + 1)
+         bg-gray-100 hover:bg-gray-300 w-6 h-6 rounded-full m-2 p-1" onClick={(event) => {
+            addProductsToCart(event, price, title, image, category, description);
           }} />
       </figure>
       <p className="flex justify-between px-3 py-1">
