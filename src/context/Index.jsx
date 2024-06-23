@@ -23,14 +23,18 @@ export const ShoppingCartProvider = ({ children }) => {
     image: "",
   });
 
-  const [cartProducts, setCartProducts] = useState([])
+  const [cartProducts, setCartProducts] = useState([]);
+
+  const [order, setOrder] = useState([]);
+
   return (
     <ShoppingCartContext.Provider value={{
       count, setCount,
       isProductDetailOpen, openProductDetail, closeProductDetail,
       productShow, setProductShow,
       cartProducts, setCartProducts,
-      isCheckoutSideMenuOpen, openCheckoutSideMenu, closeCheckoutSideMenu
+      isCheckoutSideMenuOpen, openCheckoutSideMenu, closeCheckoutSideMenu,
+      order, setOrder
     }}>
       {children}
     </ShoppingCartContext.Provider>
