@@ -56,7 +56,7 @@ const Card = ({ id, price, title, image, category, description }) => {
         <span className="absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5">
           {category}
         </span>
-        <img className="w-full h-full object-cover rounded-lg" src={image} alt={title} />
+        <img className="w-full h-full object-fill rounded-lg" src={image} alt={title} />
         {renderIcon(id)}
       </figure>
       <p className="flex justify-between px-3 py-1">

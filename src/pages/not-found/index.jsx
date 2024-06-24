@@ -2,11 +2,11 @@ import { Layout } from "../../components/layout";
 
 function NotFound() {
 
-    return (
-        <Layout>
-            NotFound
-        </Layout>
-    )
+  return (
+    <Layout>
+      NotFound
+    </Layout>
+  )
 }
 
 export { NotFound };

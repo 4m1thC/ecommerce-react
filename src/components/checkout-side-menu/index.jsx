@@ -13,7 +13,8 @@ const CheckoutSideMenu = () => {
     isCheckoutSideMenuOpen, closeCheckoutSideMenu,
     cartProducts, setCartProducts,
     count, setCount,
-    order, setOrder
+    order, setOrder,
+    setSearchInput
   } = useContext(ShoppingCartContext);
 
   const handleDelete = (id) => {
@@ -34,12 +35,13 @@ const CheckoutSideMenu = () => {
     setCartProducts([]);
     setCount(0);
     closeCheckoutSideMenu();
+    setSearchInput('');
   }
 
   return (
     <aside
       className={`${isCheckoutSideMenuOpen ? 'flex' : 'hidden'} top-[68px] overflow-y-scroll scrollbar-thumb-rounded
-     flex flex-col fixed right-0 border bg-white border-black rounded-lg w-[360px] h-[calc(100vh-68px)]`}>
+       flex flex-col fixed right-0 border bg-white border-black rounded-lg w-full md:w-[360px] h-[calc(100vh-68px)]`}>
       <div className='flex justify-between items-center p-6'>
         <h2 className='font-medium text-xl'>My Order</h2>
         <XCircleIcon

@@ -9,7 +9,9 @@ const ProductDetail = () => {
     isProductDetailOpen, closeProductDetail,
     productShow,
     count, setCount,
-    cartProducts, setCartProducts } = useContext(ShoppingCartContext);
+    cartProducts, setCartProducts,
+  } = useContext(ShoppingCartContext);
+
   const { id, image, title, category, price, description } = { ...productShow };
 
   const addProductsToCart = (event, idSend, priceSend, titleSend, imageSend, categorySend, descriptionSend) => {
@@ -26,12 +28,19 @@ const ProductDetail = () => {
     setCartProducts([...cartProducts, productSend]);
   }
 
+  const handleDelete = (id) => {
+    const filteredProducts = cartProducts.filter(product => product.id != id);
+    setCount(count - 1);
+    setCartProducts(filteredProducts);
+  }
+
   const renderButton = (idSend) => {
     const isInCart = cartProducts.filter((product) => product.id === idSend).length > 0;
     if (isInCart) {
       return (
         <button className="flex items-center justify-center bg-gray-300 hover:bg-red-500 transition-colors
          hover:text-white duration-300 ease-in-out rounded-lg cursor-pointer gap-2 p-1 shadow-xl"
+          onClick={() => handleDelete(idSend)}
         >
           <MinusCircleIcon className="size-4" />
           Remove to cart?
