@@ -1,15 +1,15 @@
 import { useRoutes, BrowserRouter } from 'react-router-dom'
-import { ShoppingCartProvider } from '../../context/index'
+import { ShoppingCartProvider } from '../context/index'
 
-import { Home } from '../home'
-import { MyAccount } from '../my-account'
-import { MyOrder } from '../my-order'
-import { NotFound } from '../not-found'
-import { Orders } from '../orders'
-import { SignIn } from '../sign-in'
-import { Navbar } from '../../components/navbar'
-import { CheckoutSideMenu } from '../../components/checkout-side-menu'
-import '../../App.css'
+import { Home } from '../pages/home'
+import { MyAccount } from '../pages/my-account'
+import { MyOrder } from '../pages/my-order'
+import { NotFound } from '../pages/not-found'
+import { Orders } from '../pages/orders'
+import { SignIn } from '../pages/sign-in'
+import { Navbar } from '../components/navbar'
+import { CheckoutSideMenu } from '../components/checkout-side-menu'
+import '../App.css'
 
 const AppRoutes = () => {
   let routes = useRoutes([
